@@ -1,1105 +1,667 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For Amani — From Jasser</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Cormorant Garamond, Playfair Display, Plus Jakarta Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Amani — From Jasser</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #140814;
+      --bg-plum: #240c24;
+      --rose-gold: #e8b4b8;
+      --rose-bright: #ffd1d6;
+      --gold-accent: #f3d299;
+      --glass-bg: rgba(42, 16, 40, 0.55);
+      --glass-border: rgba(232, 180, 184, 0.25);
+      --text-main: #fdf6f7;
+      --text-muted: #d4b8be;
+    }
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['"Cormorant Garamond"', '"Playfair Display"', 'serif'],
-                        display: ['"Playfair Display"', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        plum: {
-                            950: '#0d050c',
-                            900: '#180916',
-                            800: '#270f24',
-                            700: '#3d1738',
-                        },
-                        rosegold: {
-                            200: '#fce7eb',
-                            300: '#f7cad3',
-                            400: '#e8a5b4',
-                            500: '#d47f94',
-                            600: '#b35c73',
-                        },
-                        champagne: '#f5e6d3',
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'shimmer': 'shimmer 3s linear infinite',
-                        'spin-slow': 'spin 18s linear infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        },
-                        shimmer: {
-                            '0%': { backgroundPosition: '-200% center' },
-                            '100%': { backgroundPosition: '200% center' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <style>
-        /* Custom Atmospheric Styling & Card Flip Effects */
-        body {
-            background-color: #0d050c;
-            background-image: 
-                radial-gradient(circle at 15% 20%, rgba(180, 75, 115, 0.18) 0%, transparent 45%),
-                radial-gradient(circle at 85% 80%, rgba(212, 127, 148, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, #1c0a19 0%, #0d050c 100%);
-            color: #fce7eb;
-            overflow: hidden;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        /* Rose-gold gradient text */
-        .text-rosegold-gradient {
-            background: linear-gradient(135deg, #fff1f3 0%, #f5c3ce 35%, #d47f94 70%, #fce7eb 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 6s linear infinite;
-        }
+    body {
+      background: radial-gradient(circle at top center, #2d0f2b 0%, var(--bg-deep) 65%, #0c040c 100%);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
 
-        /* Luxury Glassmorphism */
-        .glass-card {
-            background: rgba(34, 13, 31, 0.58);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(247, 202, 211, 0.16);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
+    h1, h2, h3, .serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
 
-        .glass-card-hover {
-            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .glass-card-hover:hover {
-            border-color: rgba(247, 202, 211, 0.38);
-            box-shadow: 0 22px 55px rgba(212, 127, 148, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.18);
-            transform: translateY(-2px);
-        }
+    /* Background Canvas for Stars & Petals */
+    #ambientCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-        /* Chapter Transitions */
-        .chapter-slide {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 4.5rem 1.25rem 5.5rem 1.25rem;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(24px) scale(0.97);
-            transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), 
-                        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-            overflow-y: auto;
-        }
+    /* Floating Music Box Controller */
+    .music-pill {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      background: rgba(30, 11, 29, 0.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+      color: var(--rose-bright);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
 
-        .chapter-slide.active {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0) scale(1);
-        }
+    .music-pill:hover {
+      transform: translateY(-2px);
+      border-color: var(--rose-gold);
+    }
 
-        /* Hide scrollbars cleanly */
-        .chapter-slide::-webkit-scrollbar {
-            width: 0px;
-            background: transparent;
-        }
+    .equalizer {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 14px;
+    }
 
-        /* 3D Flip Card Styling for Chapter 1 */
-        .flip-perspective {
-            perspective: 1000px;
-        }
-        .flip-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-        .flip-card.flipped .flip-inner {
-            transform: rotateY(180deg);
-        }
-        .flip-front, .flip-back {
-            position: absolute;
-            inset: 0;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 1.25rem;
-        }
-        .flip-back {
-            transform: rotateY(180deg);
-        }
+    .equalizer span {
+      width: 3px;
+      height: 4px;
+      background: var(--gold-accent);
+      border-radius: 2px;
+      transition: height 0.2s ease;
+    }
 
-        /* Equalizer Animation */
-        .eq-bar {
-            width: 3px;
-            height: 4px;
-            background-color: #f7cad3;
-            border-radius: 999px;
-            transition: height 0.2s ease;
-        }
-        .playing .eq-bar:nth-child(1) { animation: eqBounce 0.9s ease-in-out infinite; }
-        .playing .eq-bar:nth-child(2) { animation: eqBounce 0.65s ease-in-out infinite 0.15s; }
-        .playing .eq-bar:nth-child(3) { animation: eqBounce 0.8s ease-in-out infinite 0.3s; }
-        .playing .eq-bar:nth-child(4) { animation: eqBounce 0.7s ease-in-out infinite 0.1s; }
+    .music-pill.playing .equalizer span {
+      animation: eqBounce 0.9s infinite ease-in-out alternate;
+    }
+    .music-pill.playing .equalizer span:nth-child(2) { animation-delay: 0.2s; }
+    .music-pill.playing .equalizer span:nth-child(3) { animation-delay: 0.4s; }
+    .music-pill.playing .equalizer span:nth-child(4) { animation-delay: 0.15s; }
 
-        @keyframes eqBounce {
-            0%, 100% { height: 4px; }
-            50% { height: 15px; }
-        }
+    @keyframes eqBounce {
+      0% { height: 4px; }
+      100% { height: 14px; }
+    }
 
-        /* Coupon Stamp Effect */
-        .coupon-claimed {
-            border-color: rgba(247, 202, 211, 0.45) !important;
-            background: linear-gradient(135deg, rgba(61, 23, 56, 0.75), rgba(39, 15, 36, 0.85)) !important;
-        }
-        .stamp-badge {
-            transform: rotate(-8deg) scale(1.3);
-            opacity: 0;
-            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .coupon-claimed .stamp-badge {
-            transform: rotate(-8deg) scale(1);
-            opacity: 1;
-        }
+    /* Main Layout */
+    main {
+      position: relative;
+      z-index: 2;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 22px 100px;
+    }
 
-        /* Subtle Heart Pulse */
-        @keyframes heartBeat {
-            0%, 100% { transform: scale(1); }
-            14% { transform: scale(1.12); }
-            28% { transform: scale(1); }
-            42% { transform: scale(1.08); }
-            70% { transform: scale(1); }
-        }
-        .animate-heartbeat {
-            animation: heartBeat 2.4s infinite;
-        }
-    </style>
+    section {
+      padding: 85px 0;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .chapter-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-accent);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+      font-weight: 600;
+      line-height: 1.15;
+      background: linear-gradient(135deg, #fff 15%, var(--rose-gold) 60%, var(--gold-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 42px;
+      font-size: 1rem;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    /* CHAPTER 1: HERO COVER */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 40px;
+    }
+
+    .heart-seal {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(232, 180, 184, 0.3), rgba(42, 16, 40, 0.85));
+      border: 1px solid rgba(243, 210, 153, 0.45);
+      display: grid;
+      place-items: center;
+      margin-bottom: 28px;
+      cursor: pointer;
+      position: relative;
+      box-shadow: 0 0 40px rgba(232, 180, 184, 0.25);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    }
+
+    .heart-seal:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 55px rgba(232, 180, 184, 0.45);
+    }
+
+    .heart-seal svg {
+      width: 48px;
+      height: 48px;
+      fill: var(--rose-gold);
+      filter: drop-shadow(0 0 10px rgba(232, 180, 184, 0.6));
+      animation: heartbeat 2.2s infinite ease-in-out;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.14); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.09); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.08;
+      background: linear-gradient(120deg, #ffffff 10%, var(--rose-bright) 48%, var(--gold-accent) 85%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 1.12rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin-bottom: 34px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--rose-gold), var(--gold-accent));
+      color: #1c081a;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(232, 180, 184, 0.3);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(232, 180, 184, 0.48);
+    }
+
+    /* CHAPTER 2: 3D FLIP ADORATION CARDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .flip-card {
+      height: 290px;
+      perspective: 1100px;
+      cursor: pointer;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+      transform-style: preserve-3d;
+    }
+
+    .flip-card.flipped .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front, .flip-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: 22px;
+      padding: 28px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    .flip-front .card-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      color: var(--gold-accent);
+      margin-bottom: 10px;
+    }
+
+    .flip-front h3 {
+      font-size: 1.55rem;
+      color: var(--rose-bright);
+      margin-bottom: 8px;
+    }
+
+    .flip-front span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .flip-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(155deg, rgba(64, 21, 58, 0.85), rgba(29, 10, 28, 0.92));
+      border-color: rgba(243, 210, 153, 0.45);
+    }
+
+    .flip-back p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.38rem;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.45;
+    }
+
+    /* CHAPTER 3: COMPLIMENT & RIZZ GENERATOR */
+    .glass-box {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 26px;
+      padding: 42px 30px;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .rizz-display {
+      min-height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.2vw, 2.05rem);
+      font-style: italic;
+      color: var(--rose-bright);
+      margin-bottom: 28px;
+      padding: 0 12px;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--rose-bright);
+      border: 1px solid var(--rose-gold);
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-outline:hover {
+      background: rgba(232, 180, 184, 0.16);
+      transform: translateY(-2px);
+    }
+
+    /* CHAPTER 4: CONSTELLATION FRAME & LOVE COUPONS */
+    .constellation-wrap {
+      position: relative;
+      border-radius: 24px;
+      border: 1px solid rgba(243, 210, 153, 0.32);
+      background: radial-gradient(circle at center, rgba(58, 19, 54, 0.5), rgba(18, 6, 18, 0.85));
+      padding: 36px 24px;
+      margin-bottom: 32px;
+      overflow: hidden;
+    }
+
+    .constellation-svg {
+      width: 100%;
+      max-width: 520px;
+      height: 150px;
+      margin: 0 auto 12px;
+      display: block;
+    }
+
+    .coupons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .coupon {
+      background: rgba(34, 12, 33, 0.75);
+      border: 1px dashed rgba(243, 210, 153, 0.5);
+      border-radius: 18px;
+      padding: 22px 18px;
+      text-align: center;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .coupon:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold-accent);
+    }
+
+    .coupon h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--gold-accent);
+      margin-bottom: 6px;
+    }
+
+    .coupon p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .coupon button {
+      background: rgba(232, 180, 184, 0.15);
+      border: 1px solid var(--rose-gold);
+      color: var(--rose-bright);
+      padding: 7px 18px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .coupon.claimed {
+      opacity: 0.65;
+      border-style: solid;
+    }
+
+    .coupon.claimed button {
+      background: var(--gold-accent);
+      color: #1c081a;
+      border-color: var(--gold-accent);
+      font-weight: 600;
+      cursor: default;
+    }
+
+    /* CHAPTER 5: FINALE */
+    .finale-box {
+      text-align: center;
+      padding: 54px 28px;
+      border-radius: 28px;
+      background: linear-gradient(160deg, rgba(58, 19, 54, 0.65), rgba(22, 8, 22, 0.85));
+      border: 1px solid rgba(232, 180, 184, 0.32);
+    }
+
+    .love-counter {
+      margin-top: 18px;
+      font-size: 0.92rem;
+      color: var(--gold-accent);
+      min-height: 24px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      padding-top: 30px;
+      opacity: 0.75;
+    }
+  </style>
 </head>
-<body class="h-screen w-screen relative font-sans antialiased selection:bg-rosegold-500 selection:text-white">
+<body>
 
-    <!-- Background Interactive Canvas (Starlight, Petals & Heart Bursts) -->
-    <canvas id="bgCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+  <canvas id="ambientCanvas"></canvas>
 
-    <!-- Top Progress Bar -->
-    <div class="fixed top-0 left-0 right-0 h-1 bg-white/5 z-40">
-        <div id="progressBar" class="h-full bg-gradient-to-r from-rosegold-600 via-rosegold-400 to-champagne transition-all duration-700 ease-out" style="width: 20%;"></div>
+  <!-- Music Box Toggle -->
+  <button class="music-pill" id="musicToggle" aria-label="Toggle romantic music">
+    <div class="equalizer">
+      <span></span><span></span><span></span><span></span>
     </div>
+    <span id="musicLabel">Play Music Box</span>
+  </button>
 
-    <!-- Top Header Controls -->
-    <header class="fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-5 py-4 sm:px-8">
-        <div class="flex items-center gap-2.5">
-            <span class="w-2 h-2 rounded-full bg-rosegold-400 animate-pulse"></span>
-            <span id="chapterLabel" class="text-xs uppercase tracking-[0.22em] text-rosegold-300/80 font-medium">Prelude</span>
+  <main>
+    <!-- CHAPTER 1: COVER -->
+    <section class="hero visible" id="chapter1">
+      <div class="heart-seal" id="heroHeart" title="Tap to open with music">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+      <span class="chapter-tag">Chapter I &bull; A Digital Keepsake</span>
+      <h1>For Amani, With Love</h1>
+      <p>Every star in this midnight sky was placed here to remind you how effortlessly you light up my world. Crafted just for you by Jasser.</p>
+      <button class="btn-primary" id="startJourneyBtn">Begin Your Story &darr;</button>
+    </section>
+
+    <!-- CHAPTER 2: 3D FLIP ADORATION CARDS -->
+    <section id="chapter2">
+      <div class="center">
+        <span class="chapter-tag">Chapter II &bull; Little Truths</span>
+        <h2 class="section-title">Reasons I Adore You</h2>
+        <p class="section-sub">Tap each card to flip it over and read what my heart never gets tired of saying.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="card-num">01</div>
+              <h3>Your Presence</h3>
+              <span>Tap to reveal</span>
+            </div>
+            <div class="flip-back">
+              <p>“The second you walk into a room—or pop up on my screen—everything noisy in the world suddenly feels calm and right.”</p>
+            </div>
+          </div>
         </div>
 
-        <!-- Synthesized Web Audio Music Toggle -->
-        <button id="audioToggleBtn" aria-label="Toggle romantic background melody"
-            class="glass-card flex items-center gap-2.5 px-3.5 py-2 rounded-full text-xs font-medium text-rosegold-200 hover:border-rosegold-300/40 transition-all active:scale-95 cursor-pointer">
-            <div id="eqVisualizer" class="flex items-end gap-[2.5px] h-4 w-4 justify-center">
-                <span class="eq-bar"></span>
-                <span class="eq-bar"></span>
-                <span class="eq-bar"></span>
-                <span class="eq-bar"></span>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="card-num">02</div>
+              <h3>Your Smile</h3>
+              <span>Tap to reveal</span>
             </div>
-            <span id="audioBtnText">Play Melody</span>
-        </button>
-    </header>
-
-    <!-- Main Multi-Chapter Container -->
-    <main id="appContainer" class="relative w-full h-full z-10">
-
-        <!-- =========================================================
-             CHAPTER 0: COVER / WELCOME
-        ========================================================== -->
-        <section class="chapter-slide active" data-chapter="0" data-label="Prelude">
-            <div class="max-w-xl w-full text-center flex flex-col items-center my-auto">
-                <p class="text-xs sm:text-sm uppercase tracking-[0.3em] text-rosegold-300/90 mb-4 font-medium">
-                    A Digital Keepsake &bull; Crafted With Love
-                </p>
-
-                <!-- Interactive Glowing Heart Centerpiece -->
-                <button id="coverHeartBtn" aria-label="Tap heart for love burst"
-                    class="group relative w-24 h-24 sm:w-28 sm:h-28 rounded-full glass-card flex items-center justify-center mb-6 cursor-pointer transition-transform duration-300 hover:scale-105 active:scale-95">
-                    <div class="absolute inset-0 rounded-full bg-rosegold-500/20 blur-xl group-hover:bg-rosegold-400/35 transition-all"></div>
-                    <svg class="w-12 h-12 sm:w-14 sm:h-14 text-rosegold-300 animate-heartbeat drop-shadow-[0_0_15px_rgba(247,202,211,0.6)]" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                    </svg>
-                    <span class="absolute -bottom-6 text-[11px] text-rosegold-300/60 tracking-wider opacity-80 group-hover:opacity-100">Tap the heart</span>
-                </button>
-
-                <h1 class="font-display text-5xl sm:text-7xl font-bold tracking-[0.14em] text-rosegold-gradient mt-4 mb-3">
-                    AMANI
-                </h1>
-
-                <p class="font-serif italic text-xl sm:text-2xl text-rosegold-200/90 mb-6">
-                    Every little thing reminds me of you — from Jasser
-                </p>
-
-                <p class="text-sm sm:text-base text-rosegold-200/75 max-w-md leading-relaxed mb-8 font-light">
-                    I put together a small corner of the universe just for you. Take a deep breath, turn up the melody, and open your gift.
-                </p>
-
-                <button onclick="goToChapter(1)"
-                    class="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-rosegold-600 via-rosegold-500 to-rosegold-600 text-white font-medium text-sm sm:text-base tracking-wide shadow-[0_10px_30px_rgba(212,127,148,0.4)] hover:shadow-[0_14px_38px_rgba(212,127,148,0.65)] transition-all duration-300 hover:-translate-y-0.5 active:scale-95 cursor-pointer">
-                    <span>Open Your Gift</span>
-                    <i data-lucide="sparkles" class="w-4 h-4 transition-transform group-hover:rotate-12"></i>
-                </button>
+            <div class="flip-back">
+              <p>“If I could bottle up the warmth of your laugh and the spark in your eyes, I’d never have a dark day again.”</p>
             </div>
-        </section>
-
-        <!-- =========================================================
-             CHAPTER 1: WHY YOU'RE SO SPECIAL (Interactive Flip Cards)
-        ========================================================== -->
-        <section class="chapter-slide" data-chapter="1" data-label="Chapter I &bull; Adoration">
-            <div class="max-w-4xl w-full flex flex-col items-center my-auto">
-                <div class="text-center mb-6 sm:mb-8">
-                    <span class="text-xs uppercase tracking-[0.25em] text-rosegold-400 font-medium">Chapter One</span>
-                    <h2 class="font-serif text-3xl sm:text-5xl font-semibold text-rosegold-200 mt-1">
-                        Why You’re So Special to Me
-                    </h2>
-                    <p class="text-xs sm:text-sm text-rosegold-300/75 mt-2">
-                        Tap each card to uncover what my heart sees in you
-                    </p>
-                </div>
-
-                <!-- 3 Interactive Flip Cards -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 w-full">
-                    <!-- Card 1: Her Smile -->
-                    <div class="flip-perspective h-56 sm:h-64 cursor-pointer flip-card" onclick="toggleFlipCard(this, event)">
-                        <div class="flip-inner">
-                            <div class="flip-front glass-card glass-card-hover p-6 flex flex-col items-center justify-center text-center">
-                                <div class="w-12 h-12 rounded-2xl bg-rosegold-500/20 border border-rosegold-300/25 flex items-center justify-center mb-4 text-rosegold-300">
-                                    <i data-lucide="sun" class="w-6 h-6"></i>
-                                </div>
-                                <h3 class="font-serif text-2xl font-semibold text-rosegold-200">Your Radiant Smile</h3>
-                                <p class="text-xs text-rosegold-300/65 mt-2 tracking-wide uppercase">Tap to reveal note</p>
-                            </div>
-                            <div class="flip-back glass-card p-6 flex flex-col items-center justify-center text-center border-rosegold-400/40 bg-plum-800/80">
-                                <i data-lucide="heart" class="w-5 h-5 text-rosegold-400 mb-3 fill-rosegold-400"></i>
-                                <p class="font-serif italic text-lg sm:text-xl text-rosegold-200 leading-relaxed">
-                                    "The moment you smile, Amani, the heaviest day turns weightless. It’s my favorite sight in the entire world."
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Her Voice -->
-                    <div class="flip-perspective h-56 sm:h-64 cursor-pointer flip-card" onclick="toggleFlipCard(this, event)">
-                        <div class="flip-inner">
-                            <div class="flip-front glass-card glass-card-hover p-6 flex flex-col items-center justify-center text-center">
-                                <div class="w-12 h-12 rounded-2xl bg-rosegold-500/20 border border-rosegold-300/25 flex items-center justify-center mb-4 text-rosegold-300">
-                                    <i data-lucide="music" class="w-6 h-6"></i>
-                                </div>
-                                <h3 class="font-serif text-2xl font-semibold text-rosegold-200">Your Gentle Voice</h3>
-                                <p class="text-xs text-rosegold-300/65 mt-2 tracking-wide uppercase">Tap to reveal note</p>
-                            </div>
-                            <div class="flip-back glass-card p-6 flex flex-col items-center justify-center text-center border-rosegold-400/40 bg-plum-800/80">
-                                <i data-lucide="heart" class="w-5 h-5 text-rosegold-400 mb-3 fill-rosegold-400"></i>
-                                <p class="font-serif italic text-lg sm:text-xl text-rosegold-200 leading-relaxed">
-                                    "Hearing your voice—whether you're laughing or telling me about your day—feels like coming home."
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Her Presence -->
-                    <div class="flip-perspective h-56 sm:h-64 cursor-pointer flip-card" onclick="toggleFlipCard(this, event)">
-                        <div class="flip-inner">
-                            <div class="flip-front glass-card glass-card-hover p-6 flex flex-col items-center justify-center text-center">
-                                <div class="w-12 h-12 rounded-2xl bg-rosegold-500/20 border border-rosegold-300/25 flex items-center justify-center mb-4 text-rosegold-300">
-                                    <i data-lucide="sparkles" class="w-6 h-6"></i>
-                                </div>
-                                <h3 class="font-serif text-2xl font-semibold text-rosegold-200">Your Warm Presence</h3>
-                                <p class="text-xs text-rosegold-300/65 mt-2 tracking-wide uppercase">Tap to reveal note</p>
-                            </div>
-                            <div class="flip-back glass-card p-6 flex flex-col items-center justify-center text-center border-rosegold-400/40 bg-plum-800/80">
-                                <i data-lucide="heart" class="w-5 h-5 text-rosegold-400 mb-3 fill-rosegold-400"></i>
-                                <p class="font-serif italic text-lg sm:text-xl text-rosegold-200 leading-relaxed">
-                                    "You bring peace, kindness, and magic into every space you enter. Loving you is the easiest thing I've ever done."
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <button onclick="goToChapter(2)"
-                    class="mt-7 inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card hover:border-rosegold-300/50 text-rosegold-200 text-sm font-medium transition-all active:scale-95 cursor-pointer">
-                    <span>Next Chapter</span>
-                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </button>
-            </div>
-        </section>
-
-        <!-- =========================================================
-             CHAPTER 2: A LITTLE RIZZ & COMPLIMENT GENERATOR
-        ========================================================== -->
-        <section class="chapter-slide" data-chapter="2" data-label="Chapter II &bull; Sweet Lines">
-            <div class="max-w-xl w-full flex flex-col items-center text-center my-auto">
-                <span class="text-xs uppercase tracking-[0.25em] text-rosegold-400 font-medium">Chapter Two</span>
-                <h2 class="font-serif text-3xl sm:text-5xl font-semibold text-rosegold-200 mt-1 mb-2">
-                    A Little Rizz for You
-                </h2>
-                <p class="text-xs sm:text-sm text-rosegold-300/75 mb-6">
-                    Because making you blush is my favorite sport
-                </p>
-
-                <!-- Dynamic Compliment / Rizz Card -->
-                <div class="glass-card w-full rounded-3xl p-7 sm:p-10 relative overflow-hidden">
-                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-rosegold-500/15 rounded-full blur-2xl pointer-events-none"></div>
-                    <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-rosegold-400/15 rounded-full blur-2xl pointer-events-none"></div>
-
-                    <div class="flex justify-center mb-4">
-                        <span id="rizzTag" class="px-3 py-1 rounded-full text-[11px] uppercase tracking-widest bg-rosegold-500/20 text-rosegold-300 border border-rosegold-300/20">
-                            Certified Jasser Classic #1
-                        </span>
-                    </div>
-
-                    <div class="min-h-[120px] sm:min-h-[130px] flex items-center justify-center">
-                        <p id="rizzText" class="font-serif italic text-2xl sm:text-3xl text-rosegold-200 leading-relaxed transition-all duration-300">
-                            "Are you a notification? Because every time you pop up, my heart skips a beat and nothing else matters."
-                        </p>
-                    </div>
-
-                    <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
-                        <button id="nextRizzBtn" onclick="generateNewRizz(event)"
-                            class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-gradient-to-r from-rosegold-600 to-rosegold-500 text-white text-sm font-medium shadow-lg hover:shadow-rosegold-500/30 transition-all active:scale-95 cursor-pointer">
-                            <i data-lucide="wand-2" class="w-4 h-4"></i>
-                            <span>Generate Another Line</span>
-                        </button>
-                    </div>
-                </div>
-
-                <button onclick="goToChapter(3)"
-                    class="mt-7 inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card hover:border-rosegold-300/50 text-rosegold-200 text-sm font-medium transition-all active:scale-95 cursor-pointer">
-                    <span>Our Keepsakes & Coupons</span>
-                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </button>
-            </div>
-        </section>
-
-        <!-- =========================================================
-             CHAPTER 3: OUR MEMORY VISUALIZER & LOVE COUPONS
-        ========================================================== -->
-        <section class="chapter-slide" data-chapter="3" data-label="Chapter III &bull; Keepsakes">
-            <div class="max-w-4xl w-full flex flex-col items-center my-auto">
-                <div class="text-center mb-5">
-                    <span class="text-xs uppercase tracking-[0.25em] text-rosegold-400 font-medium">Chapter Three</span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-rosegold-200 mt-1">
-                        Our Constellation & Love Coupons
-                    </h2>
-                    <p class="text-xs sm:text-sm text-rosegold-300/75 mt-1">
-                        Tap any coupon below to claim it from Jasser anytime
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 w-full items-stretch">
-                    <!-- Left: Framed Animated Memory Visualizer -->
-                    <div class="lg:col-span-5 glass-card rounded-3xl p-4 flex flex-col justify-between">
-                        <div class="relative w-full h-48 sm:h-56 rounded-2xl overflow-hidden bg-plum-950 border border-rosegold-300/20">
-                            <canvas id="memoryCanvas" class="w-full h-full block"></canvas>
-                            <div class="absolute inset-0 bg-gradient-to-t from-plum-950/90 via-transparent to-transparent flex flex-col justify-end p-4 pointer-events-none">
-                                <span class="text-[10px] uppercase tracking-[0.2em] text-rosegold-300">Jasser &hearts; Amani</span>
-                                <p class="font-serif italic text-lg text-white">Two orbits, one gravity.</p>
-                            </div>
-                        </div>
-                        <p class="text-xs text-rosegold-200/75 leading-relaxed mt-3 px-1">
-                            Every memory we build together shines brighter than the last. Here’s to a thousand more sunsets, late talks, and inside jokes.
-                        </p>
-                    </div>
-
-                    <!-- Right: Redeemable Date Coupons -->
-                    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                        <!-- Coupon 1 -->
-                        <div onclick="claimCoupon(this, event)"
-                            class="glass-card glass-card-hover rounded-2xl p-4 relative overflow-hidden cursor-pointer flex flex-col justify-between border-dashed border-rosegold-300/30">
-                            <div class="flex items-start justify-between gap-2">
-                                <div class="w-9 h-9 rounded-xl bg-rosegold-500/20 flex items-center justify-center text-rosegold-300 shrink-0">
-                                    <i data-lucide="heart-handshake" class="w-5 h-5"></i>
-                                </div>
-                                <span class="stamp-badge px-2.5 py-0.5 rounded border-2 border-rosegold-300 text-rosegold-200 text-[10px] font-bold uppercase tracking-widest">
-                                    Claimed &hearts;
-                                </span>
-                            </div>
-                            <div class="mt-3">
-                                <h3 class="font-serif text-xl font-semibold text-rosegold-200">Unlimited Hugs</h3>
-                                <p class="text-xs text-rosegold-200/70 mt-1">Redeemable immediately for long, warm, no-letting-go hugs.</p>
-                            </div>
-                            <span class="text-[10px] uppercase tracking-wider text-rosegold-400 mt-3 block coupon-hint">Tap to claim</span>
-                        </div>
-
-                        <!-- Coupon 2 -->
-                        <div onclick="claimCoupon(this, event)"
-                            class="glass-card glass-card-hover rounded-2xl p-4 relative overflow-hidden cursor-pointer flex flex-col justify-between border-dashed border-rosegold-300/30">
-                            <div class="flex items-start justify-between gap-2">
-                                <div class="w-9 h-9 rounded-xl bg-rosegold-500/20 flex items-center justify-center text-rosegold-300 shrink-0">
-                                    <i data-lucide="car" class="w-5 h-5"></i>
-                                </div>
-                                <span class="stamp-badge px-2.5 py-0.5 rounded border-2 border-rosegold-300 text-rosegold-200 text-[10px] font-bold uppercase tracking-widest">
-                                    Claimed &hearts;
-                                </span>
-                            </div>
-                            <div class="mt-3">
-                                <h3 class="font-serif text-xl font-semibold text-rosegold-200">Late Night Drive & Snacks</h3>
-                                <p class="text-xs text-rosegold-200/70 mt-1">Your favorite playlist, city lights, and all the snacks you crave.</p>
-                            </div>
-                            <span class="text-[10px] uppercase tracking-wider text-rosegold-400 mt-3 block coupon-hint">Tap to claim</span>
-                        </div>
-
-                        <!-- Coupon 3 -->
-                        <div onclick="claimCoupon(this, event)"
-                            class="glass-card glass-card-hover rounded-2xl p-4 relative overflow-hidden cursor-pointer flex flex-col justify-between border-dashed border-rosegold-300/30">
-                            <div class="flex items-start justify-between gap-2">
-                                <div class="w-9 h-9 rounded-xl bg-rosegold-500/20 flex items-center justify-center text-rosegold-300 shrink-0">
-                                    <i data-lucide="film" class="w-5 h-5"></i>
-                                </div>
-                                <span class="stamp-badge px-2.5 py-0.5 rounded border-2 border-rosegold-300 text-rosegold-200 text-[10px] font-bold uppercase tracking-widest">
-                                    Claimed &hearts;
-                                </span>
-                            </div>
-                            <div class="mt-3">
-                                <h3 class="font-serif text-xl font-semibold text-rosegold-200">Movie Night: Your Choice</h3>
-                                <p class="text-xs text-rosegold-200/70 mt-1">Zero vetoes from Jasser. Cozy blankets and full attention.</p>
-                            </div>
-                            <span class="text-[10px] uppercase tracking-wider text-rosegold-400 mt-3 block coupon-hint">Tap to claim</span>
-                        </div>
-
-                        <!-- Coupon 4 -->
-                        <div onclick="claimCoupon(this, event)"
-                            class="glass-card glass-card-hover rounded-2xl p-4 relative overflow-hidden cursor-pointer flex flex-col justify-between border-dashed border-rosegold-300/30">
-                            <div class="flex items-start justify-between gap-2">
-                                <div class="w-9 h-9 rounded-xl bg-rosegold-500/20 flex items-center justify-center text-rosegold-300 shrink-0">
-                                    <i data-lucide="coffee" class="w-5 h-5"></i>
-                                </div>
-                                <span class="stamp-badge px-2.5 py-0.5 rounded border-2 border-rosegold-300 text-rosegold-200 text-[10px] font-bold uppercase tracking-widest">
-                                    Claimed &hearts;
-                                </span>
-                            </div>
-                            <div class="mt-3">
-                                <h3 class="font-serif text-xl font-semibold text-rosegold-200">Sweet Treat & Coffee Date</h3>
-                                <p class="text-xs text-rosegold-200/70 mt-1">My treat, anywhere you want to go, just to see you smile.</p>
-                            </div>
-                            <span class="text-[10px] uppercase tracking-wider text-rosegold-400 mt-3 block coupon-hint">Tap to claim</span>
-                        </div>
-                    </div>
-                </div>
-
-                <button onclick="goToChapter(4)"
-                    class="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card hover:border-rosegold-300/50 text-rosegold-200 text-sm font-medium transition-all active:scale-95 cursor-pointer">
-                    <span>Read Final Letter</span>
-                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </button>
-            </div>
-        </section>
-
-        <!-- =========================================================
-             CHAPTER 4: FINALE — FOREVER & ALWAYS
-        ========================================================== -->
-        <section class="chapter-slide" data-chapter="4" data-label="Finale &bull; Forever Yours">
-            <div class="max-w-xl w-full flex flex-col items-center text-center my-auto">
-                <div class="glass-card rounded-3xl p-7 sm:p-10 w-full relative overflow-hidden">
-                    <div class="w-12 h-12 rounded-full bg-rosegold-500/20 border border-rosegold-300/30 flex items-center justify-center mx-auto mb-5 text-rosegold-300">
-                        <i data-lucide="sparkles" class="w-6 h-6"></i>
-                    </div>
-
-                    <h2 class="font-serif text-3xl sm:text-5xl font-semibold text-rosegold-gradient mb-5">
-                        Forever & Always
-                    </h2>
-
-                    <div class="space-y-4 font-serif text-lg sm:text-xl text-rosegold-200/90 leading-relaxed">
-                        <p>
-                            Dearest Amani,
-                        </p>
-                        <p>
-                            No webpage could ever hold everything I feel for you, because my love for you grows in every quiet moment, every shared laugh, and every dream I have for our future.
-                        </p>
-                        <p>
-                            Thank you for being my favorite person, my peace, and my greatest blessing.
-                        </p>
-                    </div>
-
-                    <div class="mt-7 pt-5 border-t border-rosegold-300/15">
-                        <p class="font-serif italic text-2xl text-rosegold-300">
-                            Forever yours,
-                        </p>
-                        <p class="font-display text-xl sm:text-2xl font-bold tracking-widest text-white mt-1">
-                            JASSER
-                        </p>
-                    </div>
-
-                    <div class="mt-7">
-                        <button id="sendLoveBtn" onclick="triggerGrandFinale(event)"
-                            class="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-rosegold-600 via-rosegold-500 to-rosegold-600 text-white font-medium text-sm sm:text-base shadow-[0_10px_30px_rgba(212,127,148,0.45)] hover:shadow-[0_14px_40px_rgba(212,127,148,0.7)] transition-all hover:-translate-y-0.5 active:scale-95 cursor-pointer">
-                            <i data-lucide="heart" class="w-5 h-5 fill-white transition-transform group-hover:scale-125"></i>
-                            <span id="sendLoveText">Send Love Back</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Toast Notification Banner (Non-blocking feedback) -->
-    <div id="toastBanner" class="fixed top-16 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-all duration-300 -translate-y-2">
-        <div class="glass-card px-5 py-2.5 rounded-full text-xs sm:text-sm text-rosegold-200 font-medium flex items-center gap-2 border-rosegold-400/40 shadow-xl">
-            <span class="text-rosegold-400">&hearts;</span>
-            <span id="toastMessage">Love sent to Jasser!</span>
-        </div>
-    </div>
-
-    <!-- Bottom Navigation Bar & Dot Indicators -->
-    <nav class="fixed bottom-0 left-0 right-0 z-30 flex items-center justify-center gap-6 px-6 py-5">
-        <button id="prevBtn" onclick="prevChapter()" aria-label="Previous chapter"
-            class="p-2.5 rounded-full glass-card text-rosegold-200/80 hover:text-white disabled:opacity-25 disabled:pointer-events-none transition-all active:scale-90 cursor-pointer">
-            <i data-lucide="chevron-left" class="w-5 h-5"></i>
-        </button>
-
-        <!-- Chapter Dots -->
-        <div id="dotIndicators" class="flex items-center gap-2.5">
-            <button onclick="goToChapter(0)" aria-label="Go to Welcome" class="nav-dot w-7 h-2 rounded-full bg-rosegold-300 transition-all duration-300 cursor-pointer"></button>
-            <button onclick="goToChapter(1)" aria-label="Go to Chapter 1" class="nav-dot w-2 h-2 rounded-full bg-rosegold-300/30 hover:bg-rosegold-300/60 transition-all duration-300 cursor-pointer"></button>
-            <button onclick="goToChapter(2)" aria-label="Go to Chapter 2" class="nav-dot w-2 h-2 rounded-full bg-rosegold-300/30 hover:bg-rosegold-300/60 transition-all duration-300 cursor-pointer"></button>
-            <button onclick="goToChapter(3)" aria-label="Go to Chapter 3" class="nav-dot w-2 h-2 rounded-full bg-rosegold-300/30 hover:bg-rosegold-300/60 transition-all duration-300 cursor-pointer"></button>
-            <button onclick="goToChapter(4)" aria-label="Go to Finale" class="nav-dot w-2 h-2 rounded-full bg-rosegold-300/30 hover:bg-rosegold-300/60 transition-all duration-300 cursor-pointer"></button>
+          </div>
         </div>
 
-        <button id="nextBtn" onclick="nextChapter()" aria-label="Next chapter"
-            class="p-2.5 rounded-full glass-card text-rosegold-200/80 hover:text-white disabled:opacity-25 disabled:pointer-events-none transition-all active:scale-90 cursor-pointer">
-            <i data-lucide="chevron-right" class="w-5 h-5"></i>
-        </button>
-    </nav>
-
-    <!-- =========================================================
-         JAVASCRIPT: AUDIO SYNTHESIZER, PARTICLE ENGINE & NAVIGATION
-    ========================================================== -->
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-
-        /* -----------------------------------------------------------
-           1. STATE & CHAPTER NAVIGATION
-        ----------------------------------------------------------- */
-        let currentChapter = 0;
-        const totalChapters = 5;
-        const slides = document.querySelectorAll('.chapter-slide');
-        const dots = document.querySelectorAll('.nav-dot');
-        const progressBar = document.getElementById('progressBar');
-        const chapterLabel = document.getElementById('chapterLabel');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        function updateUI() {
-            slides.forEach((slide, idx) => {
-                if (idx === currentChapter) {
-                    slide.classList.add('active');
-                    chapterLabel.innerHTML = slide.getAttribute('data-label');
-                } else {
-                    slide.classList.remove('active');
-                }
-            });
-
-            dots.forEach((dot, idx) => {
-                if (idx === currentChapter) {
-                    dot.classList.remove('w-2', 'bg-rosegold-300/30');
-                    dot.classList.add('w-7', 'bg-rosegold-300');
-                } else {
-                    dot.classList.remove('w-7', 'bg-rosegold-300');
-                    dot.classList.add('w-2', 'bg-rosegold-300/30');
-                }
-            });
-
-            const pct = ((currentChapter + 1) / totalChapters) * 100;
-            progressBar.style.width = `${pct}%`;
-
-            prevBtn.disabled = currentChapter === 0;
-            nextBtn.disabled = currentChapter === totalChapters - 1;
-        }
-
-        function goToChapter(index) {
-            if (index < 0 || index >= totalChapters) return;
-            currentChapter = index;
-            updateUI();
-            playSoftChime();
-            spawnHeartBurst(window.innerWidth / 2, window.innerHeight / 2, 10);
-        }
-
-        function nextChapter() {
-            if (currentChapter < totalChapters - 1) goToChapter(currentChapter + 1);
-        }
-
-        function prevChapter() {
-            if (currentChapter > 0) goToChapter(currentChapter - 1);
-        }
-
-        // Keyboard Arrow Support
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') nextChapter();
-            if (e.key === 'ArrowLeft') prevChapter();
-        });
-
-        // Mobile Touch Swipe Support
-        let touchStartX = 0;
-        let touchStartY = 0;
-        document.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            touchStartY = e.changedTouches[0].screenY;
-        }, { passive: true });
-
-        document.addEventListener('touchend', (e) => {
-            const dx = e.changedTouches[0].screenX - touchStartX;
-            const dy = e.changedTouches[0].screenY - touchStartY;
-            if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4) {
-                if (dx < 0) nextChapter();
-                else prevChapter();
-            }
-        }, { passive: true });
-
-        /* -----------------------------------------------------------
-           2. TOAST NOTIFICATION HELPER
-        ----------------------------------------------------------- */
-        let toastTimeout;
-        function showToast(msg) {
-            const banner = document.getElementById('toastBanner');
-            const text = document.getElementById('toastMessage');
-            text.textContent = msg;
-            banner.classList.remove('opacity-0', '-translate-y-2');
-            banner.classList.add('opacity-100', 'translate-y-0');
-
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => {
-                banner.classList.remove('opacity-100', 'translate-y-0');
-                banner.classList.add('opacity-0', '-translate-y-2');
-            }, 2600);
-        }
-
-        /* -----------------------------------------------------------
-           3. INTERACTIVE FEATURES (HEART, FLIP CARDS, RIZZ, COUPONS)
-        ----------------------------------------------------------- */
-        // Cover heart click
-        document.getElementById('coverHeartBtn').addEventListener('click', (e) => {
-            const rect = e.currentTarget.getBoundingClientRect();
-            spawnHeartBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 22);
-            playSoftChime();
-            showToast("Amani, you have Jasser's whole heart");
-        });
-
-        // Chapter 1: Flip Card Toggle
-        function toggleFlipCard(cardEl, event) {
-            cardEl.classList.toggle('flipped');
-            playSoftChime();
-            if (event) {
-                spawnHeartBurst(event.clientX, event.clientY, 12);
-            }
-        }
-
-        // Chapter 2: Rizz & Compliment Generator
-        const rizzLines = [
-            "Are you a notification? Because every time you pop up, my heart skips a beat and nothing else matters.",
-            "If beauty were measured in starlight, Amani, you’d be an entire galaxy outshining the night sky.",
-            "I wasn’t planning on falling this hard, and then you smiled and ruined all my plans.",
-            "Do you have a map? Because I keep getting lost in your eyes—and honestly, I never want to be found.",
-            "Scientists say nothing travels faster than light, clearly they’ve never seen how fast I fall for you every single day.",
-            "Are you made of magic? Because whenever I’m with you, time stops and everything feels right.",
-            "If I had a flower for every time I thought of you today, I’d be walking through an endless rose garden."
-        ];
-        let rizzIndex = 0;
-
-        function generateNewRizz(event) {
-            rizzIndex = (rizzIndex + 1) % rizzLines.length;
-            const textEl = document.getElementById('rizzText');
-            const tagEl = document.getElementById('rizzTag');
-
-            textEl.style.opacity = '0';
-            textEl.style.transform = 'translateY(8px)';
-
-            setTimeout(() => {
-                textEl.textContent = `"${rizzLines[rizzIndex]}"`;
-                tagEl.textContent = `Certified Jasser Classic #${rizzIndex + 1}`;
-                textEl.style.opacity = '1';
-                textEl.style.transform = 'translateY(0)';
-            }, 220);
-
-            playSoftChime();
-            if (event) {
-                spawnHeartBurst(event.clientX, event.clientY, 16);
-            }
-        }
-
-        // Chapter 3: Claimable Love Coupons
-        function claimCoupon(el, event) {
-            const isClaimed = el.classList.toggle('coupon-claimed');
-            const hint = el.querySelector('.coupon-hint');
-            const title = el.querySelector('h3').textContent;
-
-            if (isClaimed) {
-                hint.textContent = "Screenshot & show Jasser to redeem!";
-                showToast(`Claimed: "${title}"`);
-                if (event) spawnHeartBurst(event.clientX, event.clientY, 18);
-                playSoftChime();
-            } else {
-                hint.textContent = "Tap to claim";
-            }
-        }
-
-        // Chapter 4: Grand Finale Shower
-        function triggerGrandFinale(event) {
-            const btnText = document.getElementById('sendLoveText');
-            btnText.textContent = "Love Sent to Jasser!";
-            showToast("Infinite love sent to Jasser ♥");
-            playRomanticArpeggio();
-
-            // Multi-point heart shower across the screen
-            for (let i = 0; i < 6; i++) {
-                setTimeout(() => {
-                    const rx = Math.random() * window.innerWidth;
-                    const ry = window.innerHeight * (0.3 + Math.random() * 0.5);
-                    spawnHeartBurst(rx, ry, 24);
-                }, i * 180);
-            }
-        }
-
-        /* -----------------------------------------------------------
-           4. WEB AUDIO API ROMANTIC PIANO / MUSIC-BOX SYNTHESIZER
-        ----------------------------------------------------------- */
-        let audioCtx = null;
-        let isPlayingMusic = false;
-        let melodyTimer = null;
-        let noteStep = 0;
-
-        // Gentle romantic music-box melody in F Major / D Minor (frequencies in Hz)
-        const melodySequence = [
-            { freq: 349.23, dur: 0.9 }, // F4
-            { freq: 440.00, dur: 0.9 }, // A4
-            { freq: 523.25, dur: 1.2 }, // C5
-            { freq: 493.88, dur: 0.9 }, // B4
-            { freq: 440.00, dur: 0.9 }, // A4
-            { freq: 392.00, dur: 1.4 }, // G4
-            { freq: 329.63, dur: 0.9 }, // E4
-            { freq: 392.00, dur: 0.9 }, // G4
-            { freq: 440.00, dur: 1.2 }, // A4
-            { freq: 349.23, dur: 1.5 }, // F4
-            { freq: 293.66, dur: 0.9 }, // D4
-            { freq: 349.23, dur: 0.9 }, // F4
-            { freq: 440.00, dur: 1.2 }, // A4
-            { freq: 392.00, dur: 1.6 }  // G4
-        ];
-
-        function initAudioContext() {
-            if (!audioCtx) {
-                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-                audioCtx = new AudioContextClass();
-            }
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-        }
-
-        function playMusicBoxNote(freq, duration = 1.2, volume = 0.055) {
-            if (!audioCtx) return;
-            const now = audioCtx.currentTime;
-
-            // Fundamental sine wave + soft harmonic overtone for warm music-box timbre
-            const osc1 = audioCtx.createOscillator();
-            const osc2 = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-
-            osc1.type = 'sine';
-            osc1.frequency.setValueAtTime(freq, now);
-
-            osc2.type = 'triangle';
-            osc2.frequency.setValueAtTime(freq * 2, now);
-
-            const overtoneGain = audioCtx.createGain();
-            overtoneGain.gain.setValueAtTime(0.18, now);
-
-            gain.gain.setValueAtTime(0.0001, now);
-            gain.gain.exponentialRampToValueAtTime(volume, now + 0.04);
-            gain.gain.exponentialRampToValueAtTime(0.0001, now + duration * 1.4);
-
-            osc1.connect(gain);
-            osc2.connect(overtoneGain);
-            overtoneGain.connect(gain);
-            gain.connect(audioCtx.destination);
-
-            osc1.start(now);
-            osc2.start(now);
-            osc1.stop(now + duration * 1.45);
-            osc2.stop(now + duration * 1.45);
-        }
-
-        function playSoftChime() {
-            try {
-                initAudioContext();
-                playMusicBoxNote(659.25, 0.5, 0.03); // E5 gentle sparkle
-            } catch (e) {}
-        }
-
-        function playRomanticArpeggio() {
-            try {
-                initAudioContext();
-                const notes = [349.23, 440.00, 523.25, 659.25, 698.46];
-                notes.forEach((f, idx) => {
-                    setTimeout(() => playMusicBoxNote(f, 1.3, 0.05), idx * 130);
-                });
-            } catch (e) {}
-        }
-
-        function startMelodyLoop() {
-            initAudioContext();
-            isPlayingMusic = true;
-            document.getElementById('eqVisualizer').classList.add('playing');
-            document.getElementById('audioBtnText').textContent = 'Melody On';
-
-            function scheduleNext() {
-                if (!isPlayingMusic) return;
-                const currentNote = melodySequence[noteStep % melodySequence.length];
-                playMusicBoxNote(currentNote.freq, currentNote.dur, 0.05);
-                noteStep++;
-                melodyTimer = setTimeout(scheduleNext, currentNote.dur * 680);
-            }
-            scheduleNext();
-        }
-
-        function stopMelodyLoop() {
-            isPlayingMusic = false;
-            clearTimeout(melodyTimer);
-            document.getElementById('eqVisualizer').classList.remove('playing');
-            document.getElementById('audioBtnText').textContent = 'Play Melody';
-        }
-
-        document.getElementById('audioToggleBtn').addEventListener('click', () => {
-            if (isPlayingMusic) {
-                stopMelodyLoop();
-            } else {
-                startMelodyLoop();
-            }
-        });
-
-        /* -----------------------------------------------------------
-           5. BACKGROUND STARLIGHT, PETALS & HEART BURST CANVAS
-        ----------------------------------------------------------- */
-        const bgCanvas = document.getElementById('bgCanvas');
-        const bgCtx = bgCanvas.getContext('2d');
-        let width = bgCanvas.width = window.innerWidth;
-        let height = bgCanvas.height = window.innerHeight;
-
-        window.addEventListener('resize', () => {
-            width = bgCanvas.width = window.innerWidth;
-            height = bgCanvas.height = window.innerHeight;
-            resizeMemoryCanvas();
-        });
-
-        // Twinkling Stars
-        const stars = Array.from({ length: 75 }, () => ({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            r: Math.random() * 1.6 + 0.4,
-            alpha: Math.random(),
-            speed: Math.random() * 0.015 + 0.005
-        }));
-
-        // Floating Rose Petals
-        const petals = Array.from({ length: 18 }, () => ({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            size: Math.random() * 6 + 4,
-            speedY: Math.random() * 0.55 + 0.25,
-            speedX: (Math.random() - 0.5) * 0.4,
-            angle: Math.random() * Math.PI * 2,
-            spin: (Math.random() - 0.5) * 0.02,
-            opacity: Math.random() * 0.35 + 0.15
-        }));
-
-        // Interactive Heart Bursts
-        const burstHearts = [];
-
-        function spawnHeartBurst(x, y, count = 14) {
-            const colors = ['#f7cad3', '#e8a5b4', '#d47f94', '#fff1f3', '#f5e6d3'];
-            for (let i = 0; i < count; i++) {
-                const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.5;
-                const velocity = Math.random() * 4.5 + 1.8;
-                burstHearts.push({
-                    x,
-                    y,
-                    vx: Math.cos(angle) * velocity,
-                    vy: Math.sin(angle) * velocity - 1.5,
-                    size: Math.random() * 9 + 6,
-                    alpha: 1,
-                    decay: Math.random() * 0.018 + 0.012,
-                    color: colors[Math.floor(Math.random() * colors.length)]
-                });
-            }
-        }
-
-        function drawHeartShape(ctx, x, y, size, color, alpha) {
-            ctx.save();
-            ctx.globalAlpha = Math.max(0, alpha);
-            ctx.fillStyle = color;
-            ctx.translate(x, y);
-            ctx.beginPath();
-            const topCurveHeight = size * 0.3;
-            ctx.moveTo(0, topCurveHeight);
-            ctx.bezierCurveTo(0, 0, -size / 2, 0, -size / 2, topCurveHeight);
-            ctx.bezierCurveTo(-size / 2, (size + topCurveHeight) / 2, 0, (size + topCurveHeight) / 1.4, 0, size);
-            ctx.bezierCurveTo(0, (size + topCurveHeight) / 1.4, size / 2, (size + topCurveHeight) / 2, size / 2, topCurveHeight);
-            ctx.bezierCurveTo(size / 2, 0, 0, 0, 0, topCurveHeight);
-            ctx.closePath();
-            ctx.fill();
-            ctx.restore();
-        }
-
-        function animateBackground() {
-            bgCtx.clearRect(0, 0, width, height);
-
-            // Render Twinkling Stars
-            stars.forEach(s => {
-                s.alpha += s.speed;
-                const twinkle = (Math.sin(s.alpha) + 1) * 0.4 + 0.1;
-                bgCtx.beginPath();
-                bgCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-                bgCtx.fillStyle = `rgba(252, 231, 235, ${twinkle})`;
-                bgCtx.fill();
-            });
-
-            // Render Drifting Petals
-            petals.forEach(p => {
-                p.y += p.speedY;
-                p.x += p.speedX + Math.sin(p.angle) * 0.3;
-                p.angle += p.spin;
-                if (p.y > height + 20) {
-                    p.y = -20;
-                    p.x = Math.random() * width;
-                }
-                bgCtx.save();
-                bgCtx.translate(p.x, p.y);
-                bgCtx.rotate(p.angle);
-                bgCtx.fillStyle = `rgba(232, 165, 180, ${p.opacity})`;
-                bgCtx.beginPath();
-                bgCtx.ellipse(0, 0, p.size, p.size * 0.55, 0, 0, Math.PI * 2);
-                bgCtx.fill();
-                bgCtx.restore();
-            });
-
-            // Render Interactive Heart Bursts
-            for (let i = burstHearts.length - 1; i >= 0; i--) {
-                const h = burstHearts[i];
-                h.x += h.vx;
-                h.y += h.vy;
-                h.vy += 0.06; // subtle gravity
-                h.alpha -= h.decay;
-
-                if (h.alpha <= 0) {
-                    burstHearts.splice(i, 1);
-                } else {
-                    drawHeartShape(bgCtx, h.x, h.y, h.size, h.color, h.alpha);
-                }
-            }
-
-            requestAnimationFrame(animateBackground);
-        }
-
-        /* -----------------------------------------------------------
-           6. CHAPTER 3 ORBITING CONSTELLATION VISUALIZER
-        ----------------------------------------------------------- */
-        const memCanvas = document.getElementById('memoryCanvas');
-        const memCtx = memCanvas.getContext('2d');
-
-        function resizeMemoryCanvas() {
-            if (!memCanvas.parentElement) return;
-            memCanvas.width = memCanvas.parentElement.clientWidth;
-            memCanvas.height = memCanvas.parentElement.clientHeight;
-        }
-
-        let orbitAngle = 0;
-        function animateMemoryVisualizer() {
-            const w = memCanvas.width;
-            const h = memCanvas.height;
-            if (w > 0 && h > 0) {
-                memCtx.clearRect(0, 0, w, h);
-                const cx = w / 2;
-                const cy = h * 0.44;
-
-                // Soft glowing aura
-                const grad = memCtx.createRadialGradient(cx, cy, 4, cx, cy, 85);
-                grad.addColorStop(0, 'rgba(232, 165, 180, 0.35)');
-                grad.addColorStop(1, 'rgba(13, 5, 12, 0)');
-                memCtx.fillStyle = grad;
-                memCtx.beginPath();
-                memCtx.arc(cx, cy, 85, 0, Math.PI * 2);
-                memCtx.fill();
-
-                // Orbit ring
-                memCtx.strokeStyle = 'rgba(247, 202, 211, 0.22)';
-                memCtx.lineWidth = 1;
-                memCtx.beginPath();
-                memCtx.ellipse(cx, cy, 68, 28, -0.2, 0, Math.PI * 2);
-                memCtx.stroke();
-
-                // Orbiting twin stars (Jasser & Amani)
-                orbitAngle += 0.022;
-                const x1 = cx + Math.cos(orbitAngle) * 68;
-                const y1 = cy + Math.sin(orbitAngle) * 28;
-                const x2 = cx + Math.cos(orbitAngle + Math.PI) * 68;
-                const y2 = cy + Math.sin(orbitAngle + Math.PI) * 28;
-
-                // Connecting constellation line
-                memCtx.strokeStyle = 'rgba(247, 202, 211, 0.35)';
-                memCtx.beginPath();
-                memCtx.moveTo(x1, y1);
-                memCtx.lineTo(x2, y2);
-                memCtx.stroke();
-
-                // Star 1
-                memCtx.fillStyle = '#fff1f3';
-                memCtx.beginPath();
-                memCtx.arc(x1, y1, 4, 0, Math.PI * 2);
-                memCtx.fill();
-
-                // Star 2
-                memCtx.fillStyle = '#e8a5b4';
-                memCtx.beginPath();
-                memCtx.arc(x2, y2, 4, 0, Math.PI * 2);
-                memCtx.fill();
-
-                // Center pulsing heart
-                const pulse = 1 + Math.sin(orbitAngle * 2) * 0.1;
-                drawHeartShape(memCtx, cx, cy - 8 * pulse, 16 * pulse, '#f7cad3', 0.92);
-            }
-            requestAnimationFrame(animateMemoryVisualizer);
-        }
-
-        // Start loops on load
-        window.onload = function () {
-            updateUI();
-            resizeMemoryCanvas();
-            animateBackground();
-            animateMemoryVisualizer();
-        };
-    </script>
-</body>
-</html>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="card-num">03</div>
+              <h3>Your Heart</h3>
+              <span>Tap to reveal</span>
+            </div>
+            <div class="flip-back">
+              <p>“You care with a rare kind of grace and kindness that makes me want to be the best version of myself every single day.”</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 3: COMPLIMENT & RIZZ GENERATOR -->
+    <section id="chapter3">
+      <div class="center">
+        <span class="chapter-tag">Chapter III &bull; On Demand</span>
+        <h2 class="section-title">Whenever You Need a Reminder</h2>
+        <p class="section-sub">Press the button whenever you want to know exactly what Jasser is thinking about you.</p>
+      </div>
+
+      <div class="glass-box">
+        <div class="rizz-display" id="rizzText">
+          “Out of every timeline and every universe, finding you is still my favorite plot twist.”
+        </div>
+        <button class="btn-outline" id="newRizzBtn">Draw Another Note &spades;</button>
+      </div>
+    </section>
+
+    <!-- CHAPTER 4: CONSTELLATION & LOVE COUPONS -->
+    <section id="chapter4">
+      <div class="center">
+        <span class="chapter-tag">Chapter IV &bull; Written in the Stars</span>
+        <h2 class="section-title">Our Constellation &amp; Vouchers</h2>
+        <p class="section-sub">Redeemable anytime, with zero expiration date and unlimited hugs included.</p>
+      </div>
+
+      <div class="constellation-wrap center">
+        <svg class="constellation-svg" viewBox="0 0 500 140">
+          <g stroke="rgba(243, 210, 153, 0.45)" stroke-width="1.3" fill="none">
+            <polyline points="50,105 120,45 200,85 280,30 365,75 445,35" />
+            <line x1="200" y1="85" x2="250" y2="120" />
+            <line x1="250" y1="120" x2="365" y2="75" />
+          </g>
+          <g fill="#ffd1d6">
+            <circle cx="50" cy="105" r="4" />
+            <circle cx="120" cy="45" r="5" />
+            <circle cx="200" cy="85" r="4.5" />
+            <circle cx="280" cy="30" r="6" fill="#f3d299" />
+            <circle cx="365" cy="75" r="4.5" />
+            <circle cx="445" cy="35" r="5" />
+            <circle cx="250" cy="120" r="4" />
+          </g>
+        </svg>
+        <p class="serif" style="font-size: 1.3rem; color: var(--rose-bright);">Jasser &amp; Amani &mdash; Aligned Under Every Sky</p>
+
+        <div class="coupons-grid">
+          <div class="coupon">
+            <h4>Late-Night Drive &amp; Playlist</h4>
+            <p>You control the aux, the route, and the snacks. No questions asked.</p>
+            <button onclick="claimCoupon(this)">Claim Voucher</button>
+          </div>
+          <div class="coupon">
+            <h4>Sweetest Treat Delivery</h4>
+            <p>Your favorite dessert or coffee brought straight to you whenever you crave it.</p>
+            <button onclick="claimCoupon(this)">Claim Voucher</button>
+          </div>
+          <div class="coupon">
+            <h4>Uninterrupted Date Night</h4>
+            <p>Phones on silent, dressed up or cozy, all my attention 100% yours.</p>
+            <button onclick="claimCoupon(this)">Claim Voucher</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 5: FINALE -->
+    <section id="chapter5">
+      <div class="finale-box">
+        <span class="chapter-tag">Chapter V &bull; Always Yours</span>
+        <h2 class="section-title">You Are My Favorite Story, Amani</h2>
+        <p class="section-sub" style="margin-bottom: 28px;">
+          Thank you for being you. Tap below to send a burst of rose-gold hearts straight back to Jasser.
+        </p>
+        <button class="btn-primary" id="sendLoveBtn">Send Love Back &hearts;</button>
+        <div class="love-counter" id="loveCounter"></div>
+      </div>
+    </section>
+
+    <footer>
+      Handcrafted with love by Jasser &bull; Exclusively for Amani
+    </footer>
+  </main>
+
+  <script>
+    /* 1. AMBIENT STARLIGHT & FLOATING PETALS CANVAS */
+    const canvas = document.getElementById('ambientCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, particles = [], burstHearts = [];
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.reset(true);
+      }
+      reset(initial = false) {
+        this.x = Math.random() * width;
+        this.y = initial ? Math.random() * height : -15;
+        this.isPetal = Math.random() > 0.65;
+        this.size = this.isPetal ? Math.random() * 5 + 4 : Math.random() * 2 + 0.6;
+        this.speedY = this.isPetal ? Math.random() * 0.7 + 0.35 : Math.random() * 0.25 + 0.08;
+        this.speedX = (Math.random() - 0.5) * 0.45;
+        this.alpha = Math.random() * 0.65 + 0.2;
+        this.angle = Math.random() * Math.PI * 2;
+        this.spin = (Math.random() - 0.5) * 0.03;
+      }
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX + Math.sin(this.angle) * 0.25;
+        this.angle += this.spin;
+        if (this.y > height + 20) this.reset();
+      }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        if (this.isPetal) {
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.angle);
+          ctx.fillStyle = '#e8b4b8';
+          ctx.beginPath();
+          ctx.ellipse(0, 0, this.size, this.size * 0.55, 0, 0, Math.PI * 2);
+          
